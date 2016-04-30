@@ -1,32 +1,44 @@
 <%= form_for(@product) do |f| %>
 
-<div class="field">
-  <%= f.label :name %><br />
-  <%= f.text_field :name%>
-</div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name%>
+  </div>
 
-<div class="field">
-  <%= f.label :description %><br />
-  <%= f.text_field :description%>
-</div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description%>
+  </div>
 
-<div class="field">
-  <%= f.label :url %><br />
-  <%= f.url_field :url%>
-</div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.url_field :url%>
+  </div>
 
-<div class="field">
-  <%= f.label :size%><br />
-  <%= f.text_field :size%>
-</div>
+  <div class="field">
+    <%= f.label :size%><br />
+    <%= f.text_field :size%>
+  </div>
 
-<div class="field">
-  <%= f.label :price_in_cents %><br />
-  <%= f.number_field :price_in_cents%>
-</div>
+  <div class="field">
+    <%= f.label :price_in_cents %><br />
+    <%= f.number_field :price_in_cents%>
+  </div>
 
-<div class="actions">
-  <%= f.submit %>
-</div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> You messed up:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <% end %>
